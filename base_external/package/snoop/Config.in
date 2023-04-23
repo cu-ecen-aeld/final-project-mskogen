@@ -1,0 +1,6 @@
+
+config BR2_PACKAGE_SNOOP
+	bool "snoop"
+	help
+	  Middleware application for saving frame data from httpd server and logging
+	  information to an external drive.

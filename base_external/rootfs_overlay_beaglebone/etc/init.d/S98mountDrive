@@ -1,0 +1,35 @@
+#!/bin/sh
+###########################################################################
+#   This is a boot script for mounting the external storage device mounted
+#   to the BeagleBone Black for storage of Snoop and camera sensor data
+###########################################################################
+
+# Load kernel modules needed for USB storage device mounting
+modprobe fuse
+modprobe usb-storage
+
+drive_folder="/video_drive"
+
+mkdir -p $drive_folder
+
+sleep 10
+
+drive=`blkid | grep "video_store" | awk -F ":" '{ print $1 }'`
+
+if [[ -n "${drive}" ]]
+then
+    # Drive connected
+    echo "Drive mounted to ${drive}"
+else
+    # Drive not connected
+    echo "Failed to detect external drive"
+fi
+
+# Ensure no drive is mounted to folder
+umount -q $drive_folder
+mount $drive $drive_folder
+
+# Update permissions for folder to ensure anyone can read/write to drive
+chmod -R 666 $drive_folder
+
+echo "Successfully mounted ${drive} to ${drive_folder}"

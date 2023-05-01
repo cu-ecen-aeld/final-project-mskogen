@@ -6,7 +6,7 @@
 ##############################################################
 
 # NOTE: Based off of the aesd-assignments package structure
-SNOOP_VERSION = cb122b3bcd73c880c74155de28d0033493b3de69
+SNOOP_VERSION = d6cba564a76d39d5c64040bf9128019e3fe0e4a1
 SNOOP_SITE = git@github.com:mskogen/snoop.git
 SNOOP_SITE_METHOD = git
 SNOOP_GIT_SUBMODULES = YES
